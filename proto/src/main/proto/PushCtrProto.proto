@@ -1,0 +1,83 @@
+// syntax = "proto3";
+package com.wandoujia.statuscentre;
+
+option java_package = "com.wandoujia.statuscentre.proto";
+option java_outer_classname = "PushCtrProtos";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+option optimize_for = SPEED;
+
+
+message PushCtrUntilNow {
+  required string id = 1;
+  required string title = 2;
+
+  message MetricInfo {
+    required int32 metric = 3;
+    required string from = 4;
+    required string to = 5;
+  }
+
+  required  MetricInfo show = 3;
+  required MetricInfo click = 4;
+}
+
+// Series
+message DataPoint {
+  required string ts = 1;
+  required int32 shows = 2;
+  required int32 clicks = 3;
+}
+
+message Series {
+  repeated DataPoint series = 1; // datapoints
+  required string freq = 2;
+}
+
+message PushCtrRangeSum {
+  required string id = 1;
+  required string title = 2;
+
+  required int32 shows = 3;
+  required int32 clicks = 4;
+}
+
+message PushCtrRange {
+  required string id = 1;
+  required string title = 2;
+
+  required Series timeline = 3;
+}
+
+message PushInfo {
+  required string id = 1;
+  required string title = 2;
+
+  optional Series timeline = 3;
+}
+
+message PushesInfo {
+  repeated PushInfo pushes = 1;
+}
+
+message SortedPushes {
+  message Push {
+    required string id = 1;
+    required string title = 2;
+    required int32 shows = 3;
+    required int32 clicks = 4;
+  }
+
+  repeated Push sortedPushes = 1;
+}
+
+message Error {
+  optional string id = 1;
+  required string error = 2;
+}
+
+message Info {
+  optional string id = 1;
+  required string info = 2;
+}
+
