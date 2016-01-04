@@ -44,7 +44,7 @@ class PushCtrParser extends Parser {
           log.debug(s"resultInfo: $resultInfo")
 
           if (resultJson.isEmpty) {
-            log.debug("parse line error: resultJson.isEmpty") // pengfei说是其他业务打的，正常
+            log.debug("parse line error: resultJson.isEmpty")
             return None
           }
           if (!resultJson.get.asInstanceOf[Map[String, String]].contains("push2_id")) {

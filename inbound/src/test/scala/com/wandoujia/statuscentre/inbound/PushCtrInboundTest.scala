@@ -29,7 +29,7 @@ class PushCtrInboundTest extends WordSpecLike with Matchers with BeforeAndAfterA
 
   val conf = """status-centre.inbound {
                  |  parser-bindings {
-                 |    "muce.event.client.TaskEvent" = "com.wandoujia.statuscentre.inbound.parser.PushCtrParser"
+                 |    "TaskEvent" = "com.wandoujia.statuscentre.inbound.parser.PushCtrParser"
                  |  }
                  |}
                  |

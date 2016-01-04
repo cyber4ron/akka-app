@@ -61,7 +61,7 @@ class PushCtrConsumer[K, V](stream: KafkaStream[K, V],
       self ! dl
       become(abnormal)
 
-    case Stop => self ! PoisonPill // ? 可能有未处理的dead letter
+    case Stop => self ! PoisonPill // 可能有未处理的dead letter. todo: graceful shutdown
   }
 
   def abnormal: Receive = {
